@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Music Player</title>
 	<link rel="stylesheet" href="style.css" />
-	<script src="https://kit.fontawesome.com/28550bbcca.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/sunny/jquery-ui.css"> 
 </head>
 
 <body>
@@ -22,56 +22,24 @@
 				</div>
 			</nav>
 			<img src="media/468-thumbnail.png" class="song-img">
-			<h1> Song Title</h1>
-			<p> Artist Name</p>
+			<h1> Boom Bap Flick </h1>
+			<p> Quincas Moreira </p>
 			<audio id="song">
 				<source src="media/Boom Bap Flick - Quincas Moreira.mp3" type="audio/mp3">
 			</audio>
-			<input type="range" value="0" id="progress-bar">
+			<div id="progress-bar"> </div>
 
 			<div class="controls">
 				<div><i class="fa-solid fa-backward"></i></div>
-				<div onClick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+				<div id="playBtn"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
 				<div><i class="fa-solid fa-forward"></i></div>
 			</div>
 		</div>
 	</div>
-
-	<script>
-		let progress = document.getElementById("progress-bar")
-		let song = document.getElementById("song")
-		let ctrlIcon = document.getElementById("ctrlIcon")
-
-		song.onloadedmetadata = function(){
-			progress.max = song.duration;
-			progress.value = song.currentTime;
-		}
-
-		function playPause(){
-			if (ctrlIcon.classList.contains("fa-pause")){
-				song.pause();
-				ctrlIcon.classList.remove('fa-pause')
-				ctrlIcon.classList.add('fa-play')
-			}
-			else{
-				song.play();
-				ctrlIcon.classList.add('fa-pause')
-				ctrlIcon.classList.remove('fa-play')
-			}
-		}
-		if (song.play()){
-			setInterval(()=>{
-				progress.value = song.currentTime
-			},500);
-		}
-
-		progress.onchange = function(){
-			song.play();
-			song.currentTime = progress.value
-			ctrlIcon.classList.add('fa-pause')
-			ctrlIcon.classList.remove('fa-play')
-		}
-	</script>
+	<script src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script src="script.js"></script>
+	<script src="https://kit.fontawesome.com/28550bbcca.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
